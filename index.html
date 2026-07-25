@@ -185,10 +185,10 @@
       <form id="seniorForm" action="https://formspree.io/f/youssefyess13@gmail.com" method="POST">
         
         <!-- ÉTAPE 1 : PROFIL & DATES DE NAISSANCE -->
-     <!-- Étape : Mutuelle actuelle avec auto-complétion (500 mutuelles) -->
+   <!-- Étape : Mutuelle actuelle avec autocomplétion + Champ personnalisable -->
 <div class="step" id="step-mutuelle-actuelle">
   <h2>Quelle est votre mutuelle actuelle ?</h2>
-  <p class="subtitle">Saisissez les premières lettres de votre organisme pour le sélectionner.</p>
+  <p class="subtitle">Sélectionnez votre mutuelle dans la liste ou choisissez "Autre" pour la saisir.</p>
   
   <div class="input-group">
     <label for="mutuelle-input">Nom de votre mutuelle ou assurance :</label>
@@ -197,398 +197,182 @@
       id="mutuelle-input" 
       name="mutuelle_actuelle" 
       list="liste-mutuelles" 
-      placeholder="Ex: Néoliane, Assurema, Malakoff..." 
+      placeholder="Ex: Néoliane, Assurema, AXA..." 
       autocomplete="off"
+      oninput="verifierAutreMutuelle(this.value)"
       required
     >
     
-    <!-- Liste complète de 500 mutuelles et assurances -->
+    <!-- Liste massive des mutuelles, assurances et courtiers -->
     <datalist id="liste-mutuelles">
+      <option value="Autre / Non présente dans la liste"></option>
+      <option value="Aucune mutuelle actuellement"></option>
+      
+      <!-- N & A Spéciales -->
+      <option value="Néoliane Santé"></option>
+      <option value="Néoliane Prévoyance"></option>
+      <option value="Néoliane Senior"></option>
+      <option value="Assurema"></option>
+      <option value="ASAF & AFPS"></option>
+      <option value="Alan"></option>
+      <option value="April Santé Prévoyance"></option>
+      
+      <!-- Principales Mutuelles et Assureurs -->
       <option value="Abeille Assurances"></option>
       <option value="Acapia Mutuelle"></option>
-      <option value="Accor Mutuelle"></option>
-      <option value="Acheminots Mutuelle"></option>
       <option value="Acoris Mutuelle"></option>
-      <option value="Actiom / Mon Logement Ma Santé"></option>
-      <option value="Activa Assurances"></option>
-      <option value="Adrea Mutuelle"></option>
+      <option value="Actiom"></option>
       <option value="AÉSIO Mutuelle"></option>
       <option value="AFI Esca"></option>
-      <option value="AFICEA"></option>
-      <option value="AFPS (Association Française de Prévoyance et Santé)"></option>
       <option value="AG2R La Mondiale"></option>
       <option value="AGEO Assurances"></option>
       <option value="AGIPI"></option>
-      <option value="AGLAE Assurances"></option>
       <option value="AGPM"></option>
       <option value="AGRICA"></option>
-      <option value="Air France Mutuelle (MNCAF)"></option>
-      <option value="AIZO Mutuelle"></option>
-      <option value="Alan"></option>
       <option value="Albingia"></option>
       <option value="Alptis Assurances"></option>
       <option value="ALMYS"></option>
       <option value="Alsace Mutuelle"></option>
       <option value="Altima Assurances"></option>
-      <option value="Amagui Mutuelle"></option>
       <option value="AMF Assurances"></option>
-      <option value="AMI Assurances"></option>
-      <option value="AMIP Mutuelle"></option>
       <option value="AMIS Assurances"></option>
       <option value="AMPLI Mutuelle"></option>
       <option value="AMV Assurances"></option>
-      <option value="Anjou Mutuelle"></option>
       <option value="AON France"></option>
       <option value="APICIL"></option>
-      <option value="APIVITA Mutuelle"></option>
       <option value="APGIS"></option>
       <option value="APIVIA Mutuelle"></option>
-      <option value="APLUS Santé"></option>
-      <option value="APM Mutuelle"></option>
-      <option value="Appel Médical Mutuelle"></option>
       <option value="APREVA Mutuelle"></option>
       <option value="APREP Assurances"></option>
       <option value="APRIL Enterprise"></option>
-      <option value="APRIL Santé Prévoyance"></option>
       <option value="APS Prévoyance"></option>
-      <option value="AQUITAINE Mutuelle"></option>
-      <option value="Arca Patrimoine"></option>
       <option value="ARÉAS Assurances"></option>
-      <option value="ArELia Mutuelle"></option>
       <option value="Arpège Prévoyance"></option>
-      <option value="ASAF & AFPS"></option>
-      <option value="ASL Assurances"></option>
-      <option value="ASM Mutuelle"></option>
-      <option value="ASMIC Mutuelle"></option>
-      <option value="ASPOA Mutuelle"></option>
       <option value="Assur One"></option>
-      <option value="Assuranzoo"></option>
-      <option value="Assurema"></option>
       <option value="Assurance Banque Populaire"></option>
       <option value="Assurances Crédit Mutuel (ACM)"></option>
       <option value="Assurance LCL"></option>
-      <option value="Assurances Vélo"></option>
       <option value="Assureo"></option>
-      <option value="ASTREE Assurances"></option>
-      <option value="ATRIUM Santé"></option>
-      <option value="AUBÉA Mutuelle"></option>
-      <option value="Aube Santé Mutuelle"></option>
       <option value="Audiens"></option>
-      <option value="AUPALE Mutuelle"></option>
-      <option value="AURAN Mutuelle"></option>
-      <option value="AURA Santé"></option>
-      <option value="Automobile Club Association"></option>
       <option value="Avenir Mutuelle"></option>
       <option value="Avenir Santé Mutuelle"></option>
       <option value="AVIVA Assurances"></option>
-      <option value="AVS Assurances"></option>
       <option value="AXA France"></option>
-      <option value="AXA Protection Juridique"></option>
       <option value="Axelliance"></option>
-      <option value="AÉSIO Santé"></option>
       <option value="B2V Prévoyance"></option>
-      <option value="Baloo Evry"></option>
-      <option value="Banque Casino Assurances"></option>
+      <option value="Baloo"></option>
       <option value="Banque Postale Assurances"></option>
-      <option value="Barclays Assurances"></option>
-      <option value="BTP Banque Assurances"></option>
-      <option value="BTP RMS"></option>
       <option value="BTP PREVOYANCE"></option>
-      <option value="CAMACTE"></option>
       <option value="CAMIEG"></option>
-      <option value="CAMPA Mutuelle"></option>
       <option value="Cap Prévoyance"></option>
-      <option value="CapGarde"></option>
-      <option value="Capital Santé"></option>
-      <option value="CAPMA & CAPMI"></option>
-      <option value="CapVita"></option>
       <option value="Caisse d'Épargne Assurances"></option>
-      <option value="Caisse Meusienne de Retraite"></option>
       <option value="Carrefour Assurances"></option>
       <option value="CARCEPT Prévoyance"></option>
       <option value="Cardif (BNP Paribas)"></option>
-      <option value="CARMF"></option>
-      <option value="CARPIMKO"></option>
-      <option value="CBP France"></option>
       <option value="CCMO Mutuelle"></option>
-      <option value="CDA Assurances"></option>
       <option value="CÉGÉMA Assurances"></option>
-      <option value="Centralis Mutuelle"></option>
-      <option value="Centre Bretagne Mutuelle"></option>
       <option value="CFDP Assurances"></option>
-      <option value="CFF Assurances"></option>
       <option value="CGPA Assurances"></option>
-      <option value="CGPMA"></option>
       <option value="CHORUM Mutuelle"></option>
-      <option value="CICAS"></option>
       <option value="CIPRES Assurances"></option>
-      <option value="CIRCUS Mutuelle"></option>
-      <option value="CIS BTP"></option>
-      <option value="CITELIA"></option>
-      <option value="CiviLia Assurances"></option>
-      <option value="CLÉMENT Assurances"></option>
-      <option value="CMB Assurances"></option>
-      <option value="CMCAS Santé"></option>
-      <option value="CMIP Mutuelle"></option>
-      <option value="CMP Banque Assurances"></option>
       <option value="CNM Prévoyance Santé"></option>
       <option value="CNP Assurances"></option>
       <option value="Cofidis Assurances"></option>
-      <option value="Cofinoga Assurances"></option>
-      <option value="Cofinoga Protection Santé"></option>
       <option value="COLONNA Assurance"></option>
-      <option value="COLOSEE Mutuelle"></option>
-      <option value="Comutuelle"></option>
-      <option value="Cooperative de Santé"></option>
-      <option value="Cora Assurances"></option>
-      <option value="Corem"></option>
       <option value="Covéa (MAAF, MMA, GMF)"></option>
-      <option value="CPA Assurances"></option>
       <option value="CPAM (Régime Général)"></option>
-      <option value="CPCEA"></option>
-      <option value="CPM Mutuelle"></option>
       <option value="CPMS"></option>
-      <option value="CRCA Assurances"></option>
       <option value="Crédit Agricole Assurances (Predica)"></option>
-      <option value="Crédit Mutuel MGL"></option>
-      <option value="Crédit Nord Assurances"></option>
-      <option value="CYBELE Solidarité"></option>
-      <option value="D.A.S. Assurances"></option>
-      <option value="DGFIP Mutuelle"></option>
       <option value="Direct Assurance"></option>
       <option value="Diot-Siaci"></option>
-      <option value="DOMEA Mutuelle"></option>
-      <option value="DOUAISIS Mutuelle"></option>
       <option value="ECA Assurances"></option>
-      <option value="Écureuil Santé"></option>
-      <option value="EDF Mutuelle (MGEFI/Energies)"></option>
-      <option value="EFFICACE Santé"></option>
-      <option value="EOLE Mutuelle"></option>
       <option value="Éovi Mcd Mutuelle"></option>
-      <option value="EQIOM Mutuelle"></option>
-      <option value="EQUILIBRE Mutuelle"></option>
       <option value="EQUITE Assurances"></option>
-      <option value="ERA Mutuelle"></option>
-      <option value="Erica Mutuelle"></option>
       <option value="EURO ASSURANCES"></option>
-      <option value="Euro-Information Assurances"></option>
-      <option value="Euro-Dommages"></option>
-      <option value="European Relief Mutuelle"></option>
-      <option value="EUROPCENTER"></option>
       <option value="EUROP ASSISTANCE"></option>
-      <option value="EVASION Santé"></option>
-      <option value="FAP Assurances"></option>
-      <option value="Fédération Nationale de la Mutualité Française (FNMF)"></option>
-      <option value="FMF Mutuelle"></option>
-      <option value="FMH Mutuelle"></option>
-      <option value="FMP Assurances"></option>
-      <option value="FMS Mutuelle"></option>
-      <option value="FMSAR"></option>
-      <option value="FONCIA Assurances"></option>
-      <option value="Fortis Assurances"></option>
       <option value="France Mutuelle"></option>
-      <option value="Fédération Mutuelle de Paris"></option>
       <option value="GMF Assurances"></option>
       <option value="GAN Assurances"></option>
-      <option value="GAN Eurocourtage"></option>
-      <option value="GAN Prévoyance"></option>
       <option value="GARANCE Mutuelle"></option>
       <option value="Génération Assurances"></option>
       <option value="Generali France"></option>
       <option value="Gras Savoye"></option>
-      <option value="Groupama Centre-Manche"></option>
-      <option value="Groupama Grand Est"></option>
-      <option value="Groupama Loire Bretagne"></option>
-      <option value="Groupama Nord-Est"></option>
-      <option value="Groupama Oc-Méditerranée"></option>
-      <option value="Groupama Paris Val de Loire"></option>
-      <option value="Groupama Rhône-Alpes Auvergne"></option>
-      <option value="Groupama Sud-Ouest"></option>
+      <option value="Groupama"></option>
       <option value="Groupe APICIL"></option>
-      <option value="Groupe AGRICA"></option>
-      <option value="Groupe D&O"></option>
       <option value="Groupe Henner"></option>
-      <option value="Groupe IRD"></option>
       <option value="Groupe Pasteur Mutualité"></option>
       <option value="Groupe VYV"></option>
-      <option value="GSO Mutuelle"></option>
-      <option value="GPM Assurances"></option>
-      <option value="GPMI Mutuelle"></option>
-      <option value="GTP Prévoyance"></option>
-      <option value="Harmonie Fonction Publique"></option>
       <option value="Harmonie Mutuelle"></option>
-      <option value="HARMONIE SOUSCRIPTION"></option>
-      <option value="HESTIA Mutuelle"></option>
-      <option value="HMC Assurances"></option>
-      <option value="HOSPIMEDIA Santé"></option>
       <option value="Humanis"></option>
-      <option value="HYPERASSUR"></option>
-      <option value="IBAM Mutuelle"></option>
-      <option value="ICA Assurances"></option>
-      <option value="IDMACIF"></option>
-      <option value="i Santé"></option>
-      <option value="IKORIA Mutuelle"></option>
-      <option value="INCLU SANTE"></option>
-      <option value="INDÉPENDANTS Santé"></option>
-      <option value="ING Assurances"></option>
-      <option value="INP Mutuelle"></option>
       <option value="INTERIALE Mutuelle"></option>
-      <option value="InterExpansion"></option>
-      <option value="Inter Mutuelles Assistance (IMA)"></option>
-      <option value="Ircantec"></option>
       <option value="IRP AUTO"></option>
-      <option value="Isea Mutuelle"></option>
-      <option value="ISANTE"></option>
       <option value="KLESIA Prévoyance"></option>
-      <option value="KLESIA Saint-Germain"></option>
-      <option value="L'Équité Assurances"></option>
-      <option value="La Berrichonne Mutuelle"></option>
-      <option value="La Choletaise Mutuelle"></option>
-      <option value="La Lilloise Mutuelle"></option>
       <option value="La Médicale de France"></option>
-      <option value="La Mutuelle Catalane"></option>
-      <option value="La Mutuelle de France Unie"></option>
       <option value="La Mutuelle Familiale"></option>
       <option value="La Mutuelle Générale"></option>
-      <option value="La Nantaise Mutuelle"></option>
-      <option value="La Parisienne Assurances"></option>
-      <option value="La Muti Mutuelle"></option>
-      <option value="LA ROCHELAISE Mutuelle"></option>
-      <option value="La Sauvegarde"></option>
-      <option value="L'Auxiliaire"></option>
-      <option value="L'Avenir Mutuelle"></option>
-      <option value="LCL Assurances"></option>
-      <option value="L'Etoile Assurances"></option>
-      <option value="Le Finistère Assurance"></option>
-      <option value="Le Ralliement Mutuelle"></option>
-      <option value="Le Sou Médical"></option>
-      <option value="Les Ménages Prévoyants (LMP)"></option>
-      <option value="Les Mutuelles de Bretagne"></option>
       <option value="Les Mutuelles du Soleil"></option>
       <option value="L'Olivier Assurance"></option>
-      <option value="LMG Mutuelle"></option>
-      <option value="LMT Assurances"></option>
-      <option value="LOURMEL Santé"></option>
-      <option value="LPS Assurances"></option>
-      <option value="L'Union Fédérale Santé"></option>
-      <option value="LUMINA Mutuelle"></option>
-      <option value="LUNEVILLE Mutuelle"></option>
       <option value="MAAF Santé"></option>
       <option value="MACIF Santé Prévoyance"></option>
-      <option value="MACP Assurances"></option>
       <option value="MACSF"></option>
-      <option value="MADP Assurances"></option>
-      <option value="MAEE Mutuelle"></option>
-      <option value="MAE (Mutuelle Assurance de l'Éducation)"></option>
-      <option value="MAEV Mutuelle"></option>
-      <option value="MAFA Assurances"></option>
-      <option value="MAG3 Assurances"></option>
+      <option value="MAE"></option>
       <option value="MAIF Santé"></option>
-      <option value="MAIFA Assurances"></option>
       <option value="Malakoff Humanis"></option>
       <option value="MAPA Assurances"></option>
-      <option value="MAPAM Mutuelle"></option>
-      <option value="MAM Mutuelle"></option>
-      <option value="MASFIP"></option>
       <option value="MATMUT Santé"></option>
-      <option value="MCA Mutuelle (Commerçants et Artisans)"></option>
-
-      <!-- Néoliane, Assurema et réseaux spécialisés -->
-      <option value="Néoliane Santé"></option>
-      <option value="Néoliane Prévoyance"></option>
-      <option value="Néoliane Senior"></option>
-      <option value="Néoliane Vitalité"></option>
-      <option value="NetAssurances"></option>
-      <option value="NORTIA Santé"></option>
-      <option value="NOVA Mutuelle"></option>
-      <option value="NOVEM Assurances"></option>
-      <option value="Novélia"></option>
-
-      <option value="MCI Mutuelle"></option>
-      <option value="MCVPAP (Mutuelle Complementaire Ville de Paris)"></option>
-      <option value="MDA Mutuelle"></option>
-      <option value="MÉDIANE Mutuelle"></option>
-      <option value="MÉDICALE DE FRANCE"></option>
-      <option value="MÉDICIS Prévoyance"></option>
-      <option value="MÉDILIS Santé"></option>
-      <option value="MÉNAGES PRÉVOYANTS"></option>
-      <option value="MÉTAIS Mutuelle"></option>
-      <option value="METLIFE"></option>
-      <option value="MGARD Mutuelle"></option>
-      <option value="MGAS (Mutuelle Générale des Affaires Sociales)"></option>
-      <option value="MGC (Mutuelle Générale des Cheminots)"></option>
-      <option value="MGEFI (Ministère de l'Économie et des Finances)"></option>
-      <option value="MGEN (Éducation Nationale)"></option>
-      <option value="MGEN Filia"></option>
-      <option value="MGET Mutuelle"></option>
-      <option value="MGPA Mutuelle"></option>
-      <option value="MGP (Mutuelle Générale de la Police)"></option>
-      <option value="MGPS Mutuelle"></option>
-      <option value="MGR Mutuelle"></option>
-      <option value="MIF Assurances"></option>
+      <option value="MGC (Mutuelle des Cheminots)"></option>
+      <option value="MGEFI"></option>
+      <option value="MGEN"></option>
+      <option value="MGP (Police)"></option>
       <option value="MILTIS Mutuelle"></option>
       <option value="MMA Santé"></option>
-      <option value="MMC (Mutuelle Médico-Chirurgicale)"></option>
-      <option value="MMEI Mutuelle"></option>
-      <option value="MNAM Mutuelle"></option>
-      <option value="MNCAP"></option>
-      <option value="MNFCT (Fonction Publique Territoriale)"></option>
-      <option value="MNM (Mutuelle Nationale Militaire)"></option>
-      <option value="MNH (Mutuelle Nationale des Hospitaliers)"></option>
-      <option value="MNT (Mutuelle Nationale Territoriale)"></option>
-      <option value="MOCEN Mutuelle"></option>
+      <option value="MNH (Hospitaliers)"></option>
+      <option value="MNT (Territoriale)"></option>
       <option value="MONCEAU Assurances"></option>
-      <option value="MONDIAL ASSISTANCE"></option>
       <option value="Mutuelle de Poitiers Assurances"></option>
-      <option value="Mutuelle Saint-Germain"></option>
-      <option value="Mutuelle Saint-Martin"></option>
-      <option value="Mutuelle Saint-Michel"></option>
       <option value="Mutuelle Verte"></option>
-      <option value="MUTLOR Mutuelle"></option>
-      <option value="MUTUA Équipement"></option>
-      <option value="MUTUALE"></option>
-      <option value="MUTUALIA Grand Ouest"></option>
-      <option value="MUTUALIA Nord de France"></option>
-      <option value="MUTUALIA Sud UMC"></option>
-      <option value="MUTUALITÉ FRANÇAISE"></option>
-      <option value="MUTUALITÉ INTERPROFESSIONNELLE"></option>
-
+      <option value="MUTUALIA"></option>
+      <option value="Novélia"></option>
       <option value="OCIANE Matmut"></option>
-      <option value="OFA Mutuelle"></option>
-      <option value="ONEM Mutuelle"></option>
-      <option value="ORÉADE Mutuelle"></option>
-
-      <option value="Pacificatica Assurances"></option>
-      <option value="PACIFICA (Crédit Agricole)"></option>
-
-      <option value="RATP Mutuelle (Groupe MP)"></option>
-      <option value="REI Mutuelle"></option>
-      <option value="RÉUNIONÉALE Mutuelle"></option>
-      <option value="RMA (Ressources Mutuelles Assistance)"></option>
-
-      <option value="SACREAU Mutuelle"></option>
-      <option value="SAHAM Assurances"></option>
-      <option value="SAINT-CHRISTOPHE Assurances"></option>
-      <option value="SANTAIS Mutuelle"></option>
+      <option value="PACIFICA"></option>
       <option value="SOCIÉTÉ GÉNÉRALE ASSURANCES"></option>
-      <option value="SOLIMUT Mutuelle de France"></option>
+      <option value="SOLIMUT"></option>
       <option value="SMERRA / SMEREP"></option>
       <option value="SWISS LIFE Santé"></option>
-
-      <option value="TNS Santé"></option>
-      <option value="UNEO (Armées et Défense)"></option>
-      <option value="UNION MUTUELLE DE PRÉVOYANCE"></option>
-      <option value="UNION NATIONALE MUTUALISTE"></option>
-      
+      <option value="UNEO (Armées)"></option>
       <option value="VERSPIEREN"></option>
-      <option value="VITTAVI Mutuelle"></option>
       <option value="WILLIS TOWERS WATSON"></option>
-      
-      <option value="Autre compagnie / Non présente dans la liste"></option>
-      <option value="Aucune mutuelle actuellement"></option>
     </datalist>
   </div>
+
+  <!-- Champ masqué qui s'affiche si l'utilisateur choisit "Autre" -->
+  <div class="input-group" id="champ-autre-mutuelle" style="display: none; margin-top: 15px;">
+    <label for="autre-mutuelle-input">Précisez le nom de votre mutuelle :</label>
+    <input 
+      type="text" 
+      id="autre-mutuelle-input" 
+      name="autre_mutuelle_nom" 
+      placeholder="Écrivez le nom de votre mutuelle ici..." 
+    >
+  </div>
 </div>
+
+<!-- Script JS pour gérer l'affichage du champ "Autre" -->
+<script>
+function verifierAutreMutuelle(valeur) {
+  const champAutre = document.getElementById('champ-autre-mutuelle');
+  const inputAutre = document.getElementById('autre-mutuelle-input');
+  
+  if (valeur === "Autre / Non présente dans la liste") {
+    champAutre.style.display = "block";
+    inputAutre.required = true;
+  } else {
+    champAutre.style.display = "none";
+    inputAutre.required = false;
+    inputAutre.value = "";
+  }
+}
+</script>
         <div class="form-step active" id="step-1">
           <p style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-dark);">1. Vos informations personnelles :</p>
 
