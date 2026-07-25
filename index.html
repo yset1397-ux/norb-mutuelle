@@ -26,6 +26,31 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    .input-group {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #0066cc; /* Couleur principale de votre site */
+}
     :root {
       --primary: #0284c7;
       --primary-dark: #0369a1;
@@ -160,6 +185,54 @@
       <form id="seniorForm" action="https://formspree.io/f/youssefyess13@gmail.com" method="POST">
         
         <!-- ÉTAPE 1 : PROFIL & DATES DE NAISSANCE -->
+        <!-- Étape : Mutuelle actuelle avec auto-complétion -->
+<div class="step" id="step-mutuelle-actuelle">
+  <h2>Quelle est votre mutuelle actuelle ?</h2>
+  <p class="subtitle">Saisissez les premières lettres de votre compagnie d'assurance ou mutuelle.</p>
+  
+  <div class="input-group">
+    <label for="mutuelle-input">Nom de votre mutuelle :</label>
+    <input 
+      type="text" 
+      id="mutuelle-input" 
+      name="mutuelle_actuelle" 
+      list="liste-mutuelles" 
+      placeholder="Ex: Néoliane, Assurema, AXA..." 
+      autocomplete="off"
+      required
+    >
+    
+    <!-- Liste des suggestions -->
+    <datalist id="liste-mutuelles">
+      <option value="Néoliane Santé"></option>
+      <option value="Assurema"></option>
+      <option value="Asaf & AFPS"></option>
+      <option value="Alan"></option>
+      <option value="April"></option>
+      <option value="AXA"></option>
+      <option value="Acoris Mutuelle"></option>
+      <option value="Aesio Mutuelle"></option>
+      <option value="AG2R La Mondiale"></option>
+      <option value="Allianz"></option>
+      <option value="Aprep Assurances"></option>
+      <option value="Aviva / Abeille Assurances"></option>
+      <option value="Generali"></option>
+      <option value="Groupama"></option>
+      <option value="Harmonie Mutuelle"></option>
+      <option value="Klesia"></option>
+      <option value="MAAF"></option>
+      <option value="MACIF"></option>
+      <option value="Malakoff Humanis"></option>
+      <option value="MATMUT"></option>
+      <option value="MGEN"></option>
+      <option value="MMA"></option>
+      <option value="Mutuelle Générale"></option>
+      <option value="Swiss Life"></option>
+      <option value="Aune Mutuelle / Autre"></option>
+      <option value="Aucune mutuelle actuellement"></option>
+    </datalist>
+  </div>
+</div>
         <div class="form-step active" id="step-1">
           <p style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-dark);">1. Vos informations personnelles :</p>
 
@@ -177,43 +250,7 @@
               <option value="Agricole">Régime Agricole (MSA)</option>
             </select>
           </div>
-<!-- Étape : Mutuelle actuelle -->
-<div class="step" id="step-mutuelle-actuelle">
-  <h2>Quelle est votre mutuelle actuelle ?</h2>
-  <p class="subtitle">Cela nous permet de comparer les garanties équivalentes ou meilleures.</p>
-  
-  <div class="options-grid">
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="Alan">
-      <span>Alan</span>
-    </label>
-    
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="AXA">
-      <span>AXA</span>
-    </label>
-    
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="Harmonie Mutuelle">
-      <span>Harmonie Mutuelle</span>
-    </label>
-    
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="Malakoff Humanis">
-      <span>Malakoff Humanis</span>
-    </label>
-    
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="Swiss Life">
-      <span>Swiss Life</span>
-    </label>
 
-    <label class="option-card">
-      <input type="radio" name="mutuelle_actuelle" value="Autre / Pas de mutuelle">
-      <span>Autre / Pas de mutuelle</span>
-    </label>
-  </div>
-</div>
           <!-- Question Conjoint -->
           <div class="input-group" style="margin-top: 1.2rem;">
             <label>Avez-vous un(e) conjoint(e) à assurer ?</label>
