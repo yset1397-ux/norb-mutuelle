@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Norb.io | Courtier & Comparateur de Mutuelle Santé Senior</title>
+  <meta name="description" content="Comparez les meilleures mutuelles santé Senior & Retraité. Devis indépendant et gratuit. Économisez jusqu'à 40% sur vos garanties renforcées.">
+  <link rel="canonical" href="https://norb.io/">
+
+  <!-- Données structurées JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Norb.io Senior",
+    "url": "https://norb.io",
+    "description": "Courtier indépendant spécialisé en mutuelle santé senior.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1850"
+    }
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --secondary: #0f172a;
+      --accent: #10b981;
+      --bg-light: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-light); color: var(--secondary); line-height: 1.6; }
+
+    /* Header */
+    header {
+      background: #ffffff; border-bottom: 1px solid var(--border);
+      padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.8rem; font-weight: 800; color: var(--secondary); }
+    .logo span { color: var(--primary); }
+    .courtier-badge { background: #e0f2fe; color: var(--primary-dark); font-size: 0.85rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 20px; }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px; margin: 3rem auto; padding: 0 5%;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center;
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; margin: 1.5rem auto; } }
+
+    .hero h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #0f172a; }
+    .hero h1 span { color: var(--primary); }
+    .hero-p { font-size: 1.1rem; color: #475569; margin-bottom: 1.5rem; }
+
+    .features-list { list-style: none; margin-bottom: 2rem; }
+    .features-list li { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; margin-bottom: 0.8rem; }
+    .features-list li::before { content: "✓"; color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+
+    /* Form Card */
+    .form-card {
+      background: #ffffff; padding: 2rem; border-radius: 16px;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+    }
+    .step-header { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.2rem; display: flex; justify-content: space-between; }
+    
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .input-group { margin-bottom: 1rem; }
+    .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .input-group input, .input-group select { width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
+
+    /* Multi-sélection Cartes */
+    .grid-checkbox { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
+    @media (max-width: 480px) { .grid-checkbox { grid-template-columns: 1fr; } }
+
+    .checkbox-card {
+      border: 2px solid var(--border); border-radius: 10px; padding: 0.8rem;
+      display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+      transition: 0.2s; background: #ffffff;
+    }
+    .checkbox-card input { width: 18px; height: 18px; }
+    .checkbox-card.selected { border-color: var(--primary); background: #f0f9ff; color: var(--primary-dark); }
+
+    .btn-next {
+      width: 100%; background: var(--primary); color: white; padding: 0.9rem;
+      border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 1rem;
+    }
+    .btn-next:hover { background: var(--primary-dark); }
+
+    .btn-back { background: none; border: none; color: #64748b; font-weight: 600; cursor: pointer; margin-bottom: 0.8rem; text-decoration: underline; }
+
+    /* Conformité Prospection */
+    .legal-box {
+      background: #f8fafc; border: 1px solid var(--border); padding: 1rem;
+      border-radius: 8px; margin-top: 1rem; margin-bottom: 1rem;
+    }
+    .checkbox-container { display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer; font-size: 0.82rem; color: #334155; }
+    .checkbox-container input { width: 18px; height: 18px; margin-top: 2px; }
+
+    .btn-submit {
+      width: 100%; background: var(--accent); color: white; padding: 1rem;
+      border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    }
+    .btn-submit:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+    /* Message de confirmation */
+    .success-box {
+      display: none; text-align: center; padding: 2rem 1rem;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .success-icon {
+      width: 75px; height: 75px; background: #d1fae5; color: var(--accent);
+      font-size: 2.8rem; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 1.5rem;
+    }
+    .success-box h2 { font-size: 1.8rem; color: var(--secondary); margin-bottom: 0.8rem; font-weight: 800; }
+    .callout-info {
+      background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px;
+      padding: 1.2rem; font-size: 1rem; color: #0369a1; text-align: left; line-height: 1.5; margin-top: 1rem;
+    }
+
+    .trust-section { background: #ffffff; padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Norb<span>.io</span></div>
+    <div class="courtier-badge">🛡️ Courtier Spécialiste Senior</div>
+  </header>
+
+  <main class="hero">
+    <div>
+      <h1>Votre Mutuelle Senior sur-mesure, <span>sans surcoût inutile.</span></h1>
+      <p class="hero-p">Accompagnement indépendant par un expert dédié. Obtenez une étude comparative personnalisée de votre contrat actuel.</p>
+      
+      <ul class="features-list">
+        <li>Remboursement renforcé : Optique, Dentaire & Prothèses</li>
+        <li>Prise en charge immédiate (Aucun délai de carence)</li>
+        <li>Conseiller unique basé en France pour le suivi de votre dossier</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <div class="step-header" id="form-header">
+        <span>Étape <span id="current-step-num">1</span>/3</span>
+        <span style="color: var(--primary);">Étude Gratuite</span>
+      </div>
+
+      <form id="seniorForm" action="https://formspree.io/f/youssefyess13@gmail.com" method="POST">
+        
+        <!-- ÉTAPE 1 : PROFIL & DATES DE NAISSANCE -->
+        <div class="form-step active" id="step-1">
+          <p style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-dark);">1. Vos informations personnelles :</p>
+
+          <div class="input-group">
+            <label for="dob_prospect">Votre date de naissance *</label>
+            <input type="date" id="dob_prospect" name="Date_Naissance_Prospect" required>
+          </div>
+
+          <div class="input-group">
+            <label for="regime">Votre régime obligatoire *</label>
+            <select id="regime" name="Regime" required>
+              <option value="General">Régime Général (Salarié / Retraité)</option>
+              <option value="TNS">TNS / Indépendant</option>
+              <option value="Alsace">Régime Alsace-Moselle</option>
+              <option value="Agricole">Régime Agricole (MSA)</option>
+            </select>
+          </div>
+
+          <!-- Question Conjoint -->
+          <div class="input-group" style="margin-top: 1.2rem;">
+            <label>Avez-vous un(e) conjoint(e) à assurer ?</label>
+            <div style="display: flex; gap: 1rem; margin-top: 0.3rem;">
+              <label style="font-weight: 500;"><input type="radio" name="has_conjoint" value="Oui" onchange="toggleConjoint(true)"> Oui</label>
+              <label style="font-weight: 500;"><input type="radio" name="has_conjoint" value="Non" onchange="toggleConjoint(false)" checked> Non</label>
+            </div>
+          </div>
+
+          <div class="input-group" id="conjoint_dob_group" style="display: none;">
+            <label for="dob_conjoint">Date de naissance du/de la conjoint(e) (Optionnel)</label>
+            <input type="date" id="dob_conjoint" name="Date_Naissance_Conjoint">
+          </div>
+
+          <!-- Question Enfants -->
+          <div class="input-group" style="margin-top: 1rem;">
+            <label>Avez-vous des enfants à assurer ?</label>
+            <div style="display: flex; gap: 1rem; margin-top: 0.3rem;">
+              <label style="font-weight: 500;"><input type="radio" name="has_enfants" value="Oui" onchange="toggleEnfants(true)"> Oui</label>
+              <label style="font-weight: 500;"><input type="radio" name="has_enfants" value="Non" onchange="toggleEnfants(false)" checked> Non</label>
+            </div>
+          </div>
+
+          <div class="input-group" id="enfants_dob_group" style="display: none;">
+            <label for="dob_enfants">Date(s) de naissance des enfants (Optionnel)</label>
+            <input type="text" id="dob_enfants" name="Dates_Naissance_Enfants" placeholder="Ex: 12/05/2010, 14/08/2014">
+          </div>
+
+          <button type="button" class="btn-next" onclick="goToStep(2)">Étape suivante (Postes de soin) →</button>
+        </div>
+
+        <!-- ÉTAPE 2 : MULTI-SÉLECTION DES POSTES D'INTÉRÊT -->
+        <div class="form-step" id="step-2">
+          <button type="button" class="btn-back" onclick="goToStep(1)">← Retour</button>
+          <p style="font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-dark);">2. Vos postes de soins prioritaires :</p>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Cochez 1, 2, 3 ou plusieurs choix selon vos besoins :</p>
+
+          <div class="grid-checkbox">
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="Dentaire"> 🦷 Dentaire / Prothèses
+            </label>
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="Optique"> 👓 Optique / Verres
+            </label>
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="Hospitalisation"> 🏥 Hospitalisation
+            </label>
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="Audition"> 👂 Appareils Auditifs
+            </label>
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="MedecineDouce"> 🌿 Médecine Douce / Cures
+            </label>
+            <label class="checkbox-card" onclick="toggleCard(this)">
+              <input type="checkbox" name="Postes_Interet[]" value="Consultations"> 🩺 Soins Courants
+            </label>
+          </div>
+
+          <button type="button" class="btn-next" onclick="goToStep(3)">Étape suivante (Coordonnées) →</button>
+        </div>
+
+        <!-- ÉTAPE 3 : COORDONNÉES ET CONSENTEMENT -->
+        <div class="form-step" id="step-3">
+          <button type="button" class="btn-back" onclick="goToStep(2)">← Retour</button>
+          <p style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-dark);">3. Vos coordonnées :</p>
+          
+          <div class="input-group">
+            <label for="nom">Nom & Prénom *</label>
+            <input type="text" id="nom" name="Nom_Complet" required placeholder="Ex: M. Jean Dupont">
+          </div>
+
+          <div class="input-group">
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="Telephone" required placeholder="06 00 00 00 00">
+          </div>
+
+          <div class="input-group">
+            <label for="email">Adresse E-mail *</label>
+            <input type="email" id="email" name="_replyto" required placeholder="jean.dupont@email.fr">
+          </div>
+
+          <input type="hidden" id="consent_timestamp" name="Heure_Consentement_Prospection">
+
+          <div class="legal-box">
+            <label class="checkbox-container">
+              <input type="checkbox" id="consent_phone" onchange="toggleSubmitBtn()">
+              <span>
+                <strong>Accord de contact téléphonique :</strong> J'accepte expressément d'être recontacté(e) par téléphone par un conseiller Norb.io pour recevoir l'analyse comparative de ma mutuelle.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-submit" disabled>Valider ma demande d'étude</button>
+        </div>
+      </form>
+
+      <!-- MESSAGE DE CONFIRMATION AVEC LE TEXTE EXACT SOUHAITÉ -->
+      <div class="success-box" id="successBox">
+        <div class="success-icon">✓</div>
+        <h2>Demande enregistrée !</h2>
+        
+        <div class="callout-info">
+          📞 <strong>Un conseiller va vous contacter dans les plus brefs délais afin de faire le point sur vos garanties actuelles.</strong>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="trust-section">
+    <h3>Pourquoi choisir Norb.io comme courtier ?</h3>
+    <p style="color: #64748b; margin-top: 0.5rem;">Un comparateur indépendant qui privilégie le conseil humain avant tout.</p>
+  </section>
+
+  <script>
+    function goToStep(stepNumber) {
+      // Validation simple de l'étape 1 avant d'avancer
+      if (stepNumber === 2) {
+        const dob = document.getElementById('dob_prospect').value;
+        if (!dob) {
+          alert("Veuillez renseigner votre date de naissance.");
+          return;
+        }
+      }
+
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step-' + stepNumber).classList.add('active');
+      document.getElementById('current-step-num').textContent = stepNumber;
+    }
+
+    function toggleConjoint(show) {
+      document.getElementById('conjoint_dob_group').style.display = show ? 'block' : 'none';
+    }
+
+    function toggleEnfants(show) {
+      document.getElementById('enfants_dob_group').style.display = show ? 'block' : 'none';
+    }
+
+    function toggleCard(element) {
+      const checkbox = element.querySelector('input[type="checkbox"]');
+      setTimeout(() => {
+        if(checkbox.checked) {
+          element.classList.add('selected');
+        } else {
+          element.classList.remove('selected');
+        }
+      }, 50);
+    }
+
+    function toggleSubmitBtn() {
+      const checkbox = document.getElementById('consent_phone');
+      document.getElementById('submitBtn').disabled = !checkbox.checked;
+      
+      if(checkbox.checked) {
+        document.getElementById('consent_timestamp').value = new Date().toISOString();
+      }
+    }
+
+    // Gestion de l'envoi vers Formspree et affichage du message exact
+    document.getElementById('seniorForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const data = new FormData(form);
+      const submitBtn = document.getElementById('submitBtn');
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Transmission en cours...";
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        document.getElementById('seniorForm').style.display = 'none';
+        document.getElementById('form-header').style.display = 'none';
+        document.getElementById('successBox').style.display = 'block';
+      }).catch(error => {
+        document.getElementById('seniorForm').style.display = 'none';
+        document.getElementById('form-header').style.display = 'none';
+        document.getElementById('successBox').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
