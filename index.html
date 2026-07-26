@@ -4,25 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Norb.io | Courtier & Comparateur de Mutuelle Santé Senior</title>
-  <meta name="description" content="Comparez les meilleures mutuelles santé Senior & Retraité. Devis indépendant et gratuit. Économisez jusqu'à 40% sur vos garanties renforcées.">
+  <!-- Title ultra-optimisé -->
+<title>Comparateur Mutuelle Santé Senior & Retraité | Devis Gratuit | Norb.io</title>
+
+<!-- Meta Description axée sur la réassurance et la conversion -->
+<meta name="description" content="Comparez plus de 200 garanties mutuelle santé senior adaptées à vos besoins (dentaire, optique, hospitalisation). Économisez jusqu'à 40% sur votre complémentaire. Devis gratuit & sans engagement." />
+
+<!-- Open Graph pour un partage parfait sur Facebook / WhatsApp / LinkedIn -->
+<meta property="og:title" content="Norb.io - Comparateur & Courtier Mutuelle Santé Senior" />
+<meta property="og:description" content="Trouvez la meilleure mutuelle senior au meilleur prix en moins de 2 minutes." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://norb.io" />
+<meta property="og:image" content="https://norb.io/images/og-norb.jpg" />
   <link rel="canonical" href="https://norb.io/">
 
   <!-- Données structurées JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "InsuranceAgency",
-    "name": "Norb.io Senior",
-    "url": "https://norb.io",
-    "description": "Courtier indépendant spécialisé en mutuelle santé senior.",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1850"
-    }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "Norb.io",
+  "description": "Courtier et comparateur indépendant en mutuelle santé pour seniors.",
+  "url": "https://norb.io",
+  "telephone": "+33100000000",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "FR"
+  },
+  "areaServed": "FR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mutuelles Santé Senior",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Comparatif Mutuelle Retraité & Senior"
+        }
+      }
+    ]
   }
-  </script>
+}
+</script>
 
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -668,10 +693,99 @@ function verifierAutreMutuelle(valeur) {
     </div>
   </main>
 
-  <section class="trust-section">
-    <h3>Pourquoi choisir Norb.io comme courtier ?</h3>
-    <p style="color: #64748b; margin-top: 0.5rem;">Un comparateur indépendant qui privilégie le conseil humain avant tout.</p>
-  </section>
+  <section class="comparator-container">
+  <h2>Comparez les meilleures mutuelles senior en 3 étapes</h2>
+  <p class="subtitle">Obtenez un devis personnalisé, gratuit et sans engagement</p>
+
+  <form id="seniorForm">
+    <!-- ÉTAPE 1 : Besoins Santé -->
+    <div class="step step-1 active">
+      <h3>Étape 1/3 : Quels sont vos besoins prioritaires ?</h3>
+      
+      <div class="question-group">
+        <label>Hospitalisation :</label>
+        <div class="options">
+          <input type="radio" id="hosp_eco" name="hosp" value="Économique" checked>
+          <label for="hosp_eco">Minimale</label>
+          <input type="radio" id="hosp_med" name="hosp" value="Moyenne">
+          <label for="hosp_med">Confort</label>
+          <input type="radio" id="hosp_max" name="hosp" value="Maximale">
+          <label for="hosp_max">Chambre seule</label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label>Optique (Lunettes / Verres complexes) :</label>
+        <div class="options">
+          <input type="radio" id="opt_eco" name="optique" value="Économique" checked>
+          <label for="opt_eco">Standard</label>
+          <input type="radio" id="opt_max" name="optique" value="Maximale">
+          <label for="opt_max">Renforcé</label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label>Dentaire & Prothèses :</label>
+        <div class="options">
+          <input type="radio" id="dent_eco" name="dentaire" value="Économique" checked>
+          <label for="dent_eco">100% Santé</label>
+          <input type="radio" id="dent_max" name="dentaire" value="Maximale">
+          <label for="dent_max">Haut remboursement</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn-next" onclick="nextStep(2)">Étape suivante ➔</button>
+    </div>
+
+    <!-- ÉTAPE 2 : Profil -->
+    <div class="step step-2">
+      <h3>Étape 2/3 : Votre Profil</h3>
+      <div class="form-field">
+        <label for="age">Votre année de naissance :</label>
+        <input type="number" id="age" name="year" placeholder="Ex: 1958" min="1930" max="2005" required>
+      </div>
+
+      <div class="form-field">
+        <label for="regime">Régime social :</label>
+        <select id="regime" name="regime">
+          <option value="general">Régime Général (Salarié / Retraité)</option>
+          <option value="tns">Indépendant / TNS</option>
+          <option value="alsace">Alsace-Moselle</option>
+          <option value="agricole">MSA</option>
+        </select>
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn-back" onclick="nextStep(1)">Retour</button>
+        <button type="button" class="btn-next" onclick="nextStep(3)">Étape suivante ➔</button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 : Coordonnées -->
+    <div class="step step-3">
+      <h3>Étape 3/3 : Recevez votre tarif personnalisé</h3>
+      <div class="form-field">
+        <label for="fullname">Nom & Prénom :</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Jean Dupont" required>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Adresse e-mail :</label>
+        <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" required>
+      </div>
+
+      <div class="form-field">
+        <label for="phone">Téléphone (pour l'envoi du devis) :</label>
+        <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required>
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn-back" onclick="nextStep(2)">Retour</button>
+        <button type="submit" class="btn-submit">🔒 Obtenir mes tarifs gratuitement</button>
+      </div>
+    </div>
+  </form>
+</section>
 
   <script>
     function goToStep(stepNumber) {
