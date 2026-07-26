@@ -1,0 +1,12 @@
+body {
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  color: #333333;
+}
+
+.btn-devis {
+  background-color: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+}
